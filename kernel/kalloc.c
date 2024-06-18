@@ -96,7 +96,7 @@ freemem(void)
 
   while (r) {
     total+=PGSIZE;
-    kmem.freelist = r->next;
+    r = r->next;
   }
 
   return total;
