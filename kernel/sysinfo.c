@@ -2,6 +2,8 @@
 #include "riscv.h"
 #include "info.h"
 #include "defs.h"
+#include "param.h"
+#include "spinlock.h"
 #include "proc.h"
 
 uint64
