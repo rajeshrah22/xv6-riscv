@@ -9,7 +9,7 @@ main(int argc, char *argv[])
 {
   struct sysinfo si;
   info(&si);
-  printf("nproc: %d\nfreemem: %d\n", si.nproc, si.freemem);
+  printf("nproc: %d\nfreemem: %d bytes\n", si.nproc, si.freemem);
 
   exit(0);
 }
