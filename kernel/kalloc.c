@@ -80,3 +80,24 @@ kalloc(void)
     memset((char*)r, 5, PGSIZE); // fill with junk
   return (void*)r;
 }
+
+// returns the amount of bytes that are free (unallocated)
+// total = number of free pages * PGSIZE
+int
+freemem(void)
+{
+  struct run *r;
+  int total = 0;
+  r = kmem.freelist;
+
+  // kmem.freelist should not be null at this point
+  if(!r)
+    panic("kalloc: kmem.freelist is null");
+
+  while (r) {
+    total+=PGSIZE;
+    kmem.freelist = r->next;
+  }
+
+  return total;
+}
