@@ -681,3 +681,19 @@ procdump(void)
     printf("\n");
   }
 }
+
+// list all processes that are not unused
+
+int
+nproc(void)
+{
+  struct proc *p;
+  int count = 0;
+  for(p = proc; p < &proc[NPROC]; p++){
+    if (p->state == UNUSED)
+      continue;
+    count++;
+  }
+
+  return count;
+}
